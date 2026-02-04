@@ -3,9 +3,13 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "env": {
-    "VITE_API_URL": "https://aplikasi-kasir-backend.vercel.app/api"
+    "VITE_API_URL": "/api"
   },
   "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://aplikasi-kasir-backend.vercel.app/api/$1"
+    },
     {
       "src": "/assets/.*",
       "dest": "/assets/$1",
@@ -28,7 +32,7 @@
       }
     },
     {
-      "src": "/(?!assets).*",
+      "src": "/(?!assets|api).*",
       "dest": "/index.html"
     }
   ]
