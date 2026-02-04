@@ -7,11 +7,28 @@
   },
   "routes": [
     {
-      "src": "/",
-      "dest": "/index.html"
+      "src": "/assets/.*",
+      "dest": "/assets/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
     },
     {
-      "src": "/(.*)",
+      "src": "/.*\\.js",
+      "dest": "/$0",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/.*\\.css",
+      "dest": "/$0",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/(?!assets).*",
       "dest": "/index.html"
     }
   ]
